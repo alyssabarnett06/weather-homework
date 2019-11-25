@@ -19,3 +19,8 @@ $('#cityName').submit(function(e){
         var temp = $("<p>").addClass('card-text').text('Temperature: ' + Math.round(response.main.temp) + '°F');
         var humidity = $("<p>").addClass('card-text').text('Humidity: ' + response.main.humidity + '%');
         var windSpeed = $("<p>").addClass('card-text').text('Wind Speed: ' + response.wind.speed + 'mph');
+        body.append(header, temp, humidity, windSpeed);
+        card.append(body);
+        $('#weatherResult').prepend(card);
+    });
+    
