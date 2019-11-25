@@ -9,4 +9,13 @@ $('#cityName').submit(function(e){
     $.ajax({
         url: queryUrl,
         method: "GET"
-    })
+    }).then(function(response){
+        console.log(response);
+        var imgUrl = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
+        var img = $('<img>').attr('src', imgUrl);
+        var card = $('<div>').addClass('card mt-3');
+        var body = $("<div>").addClass('card-body');
+        var header = $("<h5>").addClass('card-title').text(response.name + ' (' + date + ')').append(img);
+        var temp = $("<p>").addClass('card-text').text('Temperature: ' + Math.round(response.main.temp) + '°F');
+        var humidity = $("<p>").addClass('card-text').text('Humidity: ' + response.main.humidity + '%');
+        var windSpeed = $("<p>").addClass('card-text').text('Wind Speed: ' + response.wind.speed + 'mph');
