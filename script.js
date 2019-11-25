@@ -23,4 +23,5 @@ $('#cityName').submit(function(e){
         card.append(body);
         $('#weatherResult').prepend(card);
     });
-    
+    $("#userInput").val('');
+})
